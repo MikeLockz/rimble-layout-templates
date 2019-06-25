@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Box, Heading } from "rimble-ui";
+import SideNavLayout from "./Layouts/SideNavLayout";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route exact path="/" component={Home} />
+      <Route path="/side-nav" component={SideNavLayout} />
+    </Router>
+  );
+}
+
+function Home() {
+  return (
+    <Box maxWidth="600px" mx={"auto"} my={4}>
+      <Heading.h1>Available Layouts</Heading.h1>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/side-nav">Side Navigation</Link>
+        </li>
+      </ul>
+    </Box>
   );
 }
 
